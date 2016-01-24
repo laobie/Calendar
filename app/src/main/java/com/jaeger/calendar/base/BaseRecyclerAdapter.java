@@ -8,17 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
 
-public class BaseRecyclerAdapter extends Adapter<ViewHolder> {
-    protected Context context;
-    protected LayoutInflater inflater;
-    protected OnItemClickListener onItemClickListener;
-    private OnItemLongClickListener onItemLongClickListener;
+public class BaseRecyclerAdapter<T> extends Adapter<ViewHolder> {
+    protected Context mContext;
+    protected LayoutInflater mInflater;
+    protected List<T> mList;
+    protected OnItemClickListener mOnItemClickListener;
+    private OnItemLongClickListener mOnItemLongClickListener;
 
-    public BaseRecyclerAdapter(Context context) {
-        this.context = context;
-        inflater = LayoutInflater.from(context);
-//        Fresco.initialize(context);
+    public BaseRecyclerAdapter(Context context, List<T> list) {
+        mContext = context;
+        mList = list;
+        mInflater = LayoutInflater.from(context);
     }
 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,7 +34,7 @@ public class BaseRecyclerAdapter extends Adapter<ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mList.size();
     }
 
     public interface OnItemClickListener {
@@ -44,11 +46,11 @@ public class BaseRecyclerAdapter extends Adapter<ViewHolder> {
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
+        this.mOnItemClickListener = onItemClickListener;
     }
 
     public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.onItemLongClickListener = onItemLongClickListener;
+        this.mOnItemLongClickListener = onItemLongClickListener;
     }
 
     /**
@@ -66,15 +68,15 @@ public class BaseRecyclerAdapter extends Adapter<ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            if (onItemClickListener != null) {
-                onItemClickListener.onItemClick(v, getLayoutPosition());
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(v, getLayoutPosition());
             }
         }
 
         @Override
         public boolean onLongClick(View v) {
-            if (onItemLongClickListener != null) {
-                onItemLongClickListener.onItemLongClick(v, getLayoutPosition());
+            if (mOnItemLongClickListener != null) {
+                mOnItemLongClickListener.onItemLongClick(v, getLayoutPosition());
                 return true;
             } else {
                 return false;

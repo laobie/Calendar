@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class DateUtils {
 
-    public List<Day> getDaysOfMonth(int year, int month) {
+    public static List<Day> getDaysOfMonth(int year, int month) {
         List<Day> days = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
@@ -21,7 +21,7 @@ public class DateUtils {
         for (int i = 0; i < calendar.get(Calendar.DAY_OF_WEEK); i++) {
             days.add(null);
         }
-        for (int i = 1; i <= calendar.get(Calendar.DAY_OF_MONTH); i++) {
+        for (int i = 1; i <= calendar.getActualMaximum(Calendar.DATE); i++) {
             Day day = new Day(year, month, i);
             days.add(day);
         }

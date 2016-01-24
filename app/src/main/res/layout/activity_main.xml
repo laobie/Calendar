@@ -40,7 +40,6 @@
             android:gravity="right|bottom"
             android:textSize="18sp"
             tools:text="星期三"/>
-
     </LinearLayout>
 
     <TextView
@@ -59,6 +58,15 @@
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
         tools:text="正月 初三"/>
+
+    <include layout="@layout/include_week_header"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/white"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_month_view"

@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">日历</string>
     <string name="lunar_format" formatted="false">%s %s</string>
-
+    <string name="sun">日</string>
+    <string name="mon">一</string>
+    <string name="tues">二</string>
+    <string name="wed">三</string>
+    <string name="thur">四</string>
+    <string name="fri">五</string>
+    <string name="sat">六</string>
 </resources>
