@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">日历</string>
+    <string name="lunar_format" formatted="false">%s %s</string>
+
+</resources>
