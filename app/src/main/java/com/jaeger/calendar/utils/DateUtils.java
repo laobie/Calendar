@@ -2,7 +2,6 @@ package com.jaeger.calendar.utils;
 
 import com.jaeger.calendar.entity.Day;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -12,13 +11,12 @@ import java.util.List;
  */
 public class DateUtils {
 
-    public static List<Day> getDaysOfMonth(int year, int month) {
-        List<Day> days = new ArrayList<>();
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month);
+    public static List<Day> getDaysOfMonth(Calendar calendar, List<Day> days) {
+        days.clear();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        for (int i = 0; i < calendar.get(Calendar.DAY_OF_WEEK); i++) {
+        for (int i = 0; i < calendar.get(Calendar.DAY_OF_WEEK) - 1; i++) {
             days.add(null);
         }
         for (int i = 1; i <= calendar.getActualMaximum(Calendar.DATE); i++) {
@@ -27,4 +25,5 @@ public class DateUtils {
         }
         return days;
     }
+
 }

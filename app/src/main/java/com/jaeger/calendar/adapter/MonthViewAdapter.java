@@ -34,6 +34,9 @@ public class MonthViewAdapter extends BaseRecyclerAdapter<Day> {
         if (day != null) {
             viewHolder.mTvDay.setText(day.getDayStr());
             viewHolder.mTvLunarDay.setText(day.getLunarDay());
+        } else {
+            viewHolder.mTvDay.setText(null);
+            viewHolder.mTvLunarDay.setText(null);
         }
     }
 
