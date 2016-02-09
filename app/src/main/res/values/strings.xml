@@ -8,4 +8,6 @@
     <string name="thur">四</string>
     <string name="fri">五</string>
     <string name="sat">六</string>
+    <string name="lunar_first_day_of_month">初一</string>
+    <string name="month">月</string>
 </resources>

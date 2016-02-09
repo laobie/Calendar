@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <style name="BaseAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -8,12 +9,12 @@
         <item name="android:textColor">@color/text_white</item>
     </style>
 
-    <style name="AppTheme" parent="BaseAppTheme">
-
-    </style>
+    <style name="AppTheme" parent="BaseAppTheme"/>
 
     <style name="AppTheme.NoActionBar" parent="BaseAppTheme">
         <item name="android:windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="TranslucentTheme" parent="AppTheme" />
 </resources>

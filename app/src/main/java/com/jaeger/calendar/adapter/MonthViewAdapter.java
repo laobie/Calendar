@@ -33,7 +33,11 @@ public class MonthViewAdapter extends BaseRecyclerAdapter<Day> {
         Day day = mList.get(position);
         if (day != null) {
             viewHolder.mTvDay.setText(day.getDayStr());
-            viewHolder.mTvLunarDay.setText(day.getLunarDay());
+            if (day.getLunarDay().equals(mContext.getResources().getString(R.string.lunar_first_day_of_month))) {
+                viewHolder.mTvLunarDay.setText(day.getLunarMonth() + "月");
+            } else {
+                viewHolder.mTvLunarDay.setText(day.getLunarDay());
+            }
         } else {
             viewHolder.mTvDay.setText(null);
             viewHolder.mTvLunarDay.setText(null);

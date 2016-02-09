@@ -1,5 +1,6 @@
 <resources>
 
+
     <style name="TextWeekNum">
         <item name="android:padding">3dp</item>
         <item name="android:layout_width">0dp</item>

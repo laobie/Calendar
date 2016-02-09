@@ -18,33 +18,40 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
     private Day mToday;
-    private TextView mTvDay;
-    private TextView mTvLunar;
-    private TextView mTvYear;
-    private TextView mTvMonth;
-    private TextView mTvWeek;
-    private RecyclerView mRvMonthView;
     private Calendar mCalendar;
     private List<Day> mDayList;
     private MonthViewAdapter mMonthViewAdapter;
 
+    // 控件
+    private TextView mTvLunarMonth;
+    private TextView mTvLunarDay;
+    private TextView mTvLunarHoliday;
+    private TextView mTvYear;
+    private TextView mTvMonth;
+    private TextView mTvDay;
+    private TextView mTvWeek;
     private ImageView mIvLastMonth;
     private TextView mTvYearAndMonth;
     private ImageView mIvNextMonth;
+    private RecyclerView mRvMonthView;
+    private TextView mTvLunarYear;
+
 
     @Override
     protected void initView() {
         setContentView(R.layout.activity_main);
+        mTvLunarMonth = (TextView) findViewById(R.id.tv_lunar_month);
+        mTvLunarDay = (TextView) findViewById(R.id.tv_lunar_day);
+        mTvLunarHoliday = (TextView) findViewById(R.id.tv_lunar_holiday);
         mTvYear = (TextView) findViewById(R.id.tv_year);
         mTvMonth = (TextView) findViewById(R.id.tv_month);
-        mTvWeek = (TextView) findViewById(R.id.tv_week);
         mTvDay = (TextView) findViewById(R.id.tv_day);
-        mTvLunar = (TextView) findViewById(R.id.tv_lunar);
-        mRvMonthView = (RecyclerView) findViewById(R.id.rv_month_view);
+        mTvWeek = (TextView) findViewById(R.id.tv_week);
         mIvLastMonth = (ImageView) findViewById(R.id.iv_last_month);
         mTvYearAndMonth = (TextView) findViewById(R.id.tv_year_and_month);
         mIvNextMonth = (ImageView) findViewById(R.id.iv_next_month);
-
+        mRvMonthView = (RecyclerView) findViewById(R.id.rv_month_view);
+        mTvLunarYear = (TextView) findViewById(R.id.tv_lunar_year);
     }
 
     @Override
@@ -58,7 +65,9 @@ public class MainActivity extends BaseActivity {
         mTvMonth.setText(mToday.getMonthStr());
         mTvWeek.setText(mToday.getWeekStr());
         mTvDay.setText(mToday.getDayStr());
-        mTvLunar.setText(mToday.getLunarDayMD());
+        mTvLunarDay.setText(mToday.getLunarDay());
+        mTvLunarMonth.setText(mToday.getLunarMonth() + "月");
+        mTvLunarYear.setText(mToday.getZodiac() + "年");
         mTvYearAndMonth.setText(mCalendar.get(Calendar.YEAR) + "年" + " " + (mCalendar.get(Calendar.MONTH) + 1) + "月");
         mIvLastMonth.setOnClickListener(this);
         mIvNextMonth.setOnClickListener(this);
