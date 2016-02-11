@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.jaeger.calendar.R;
 import com.jaeger.calendar.base.BaseRecyclerAdapter;
 import com.jaeger.calendar.entity.Day;
+import com.jaeger.calendar.utils.StrUtils;
 
 import java.util.List;
 
@@ -34,9 +35,13 @@ public class MonthViewAdapter extends BaseRecyclerAdapter<Day> {
         if (day != null) {
             viewHolder.mTvDay.setText(day.getDayStr());
             if (day.getLunarDay().equals(mContext.getResources().getString(R.string.lunar_first_day_of_month))) {
-                viewHolder.mTvLunarDay.setText(day.getLunarMonth() + "月");
+                viewHolder.mTvLunarDay.setText(StrUtils.getFormatString(R.string.lunar_month_unit, day.getLunarMonth()));
             } else {
-                viewHolder.mTvLunarDay.setText(day.getLunarDay());
+                if (day.getSolarTerm() == null) {
+                    viewHolder.mTvLunarDay.setText(day.getLunarDay());
+                } else {
+                    viewHolder.mTvLunarDay.setText(day.getSolarTerm());
+                }
             }
         } else {
             viewHolder.mTvDay.setText(null);

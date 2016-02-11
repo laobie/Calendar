@@ -2,6 +2,8 @@ package com.jaeger.calendar.entity;
 
 import com.jaeger.calendar.lib.Lunar;
 
+import java.util.Calendar;
+
 /**
  * Created by Jaeger on 16/1/24.
  * Calendar
@@ -25,12 +27,12 @@ public class Day extends Lunar {
         super(year, month, day);
     }
 
-    public static Day getToday() {
-        return new Day(System.currentTimeMillis());
+    public Day(Calendar calendar){
+        super(calendar.get(Calendar.MILLISECOND));
     }
 
-    public String getLunarDayMD() {
-        return getLunarMonth() + MONTH + " " + getLunarDay();
+    public static Day getToday() {
+        return new Day(System.currentTimeMillis());
     }
 
     public String getMonthStr() {

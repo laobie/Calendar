@@ -10,4 +10,7 @@
     <string name="sat">六</string>
     <string name="lunar_first_day_of_month">初一</string>
     <string name="month">月</string>
+    <string name="lunar_month_unit" formatted="false">%s月</string>
+    <string name="lunar_year_unit" formatted="false">%s年</string>
+    <string name="year_and_month_unit" formatted="false">%d年 %d月</string>
 </resources>

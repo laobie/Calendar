@@ -11,6 +11,7 @@ import com.jaeger.calendar.adapter.MonthViewAdapter;
 import com.jaeger.calendar.base.BaseActivity;
 import com.jaeger.calendar.entity.Day;
 import com.jaeger.calendar.utils.DateUtils;
+import com.jaeger.calendar.utils.StrUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -66,9 +67,11 @@ public class MainActivity extends BaseActivity {
         mTvWeek.setText(mToday.getWeekStr());
         mTvDay.setText(mToday.getDayStr());
         mTvLunarDay.setText(mToday.getLunarDay());
-        mTvLunarMonth.setText(mToday.getLunarMonth() + "月");
-        mTvLunarYear.setText(mToday.getZodiac() + "年");
-        mTvYearAndMonth.setText(mCalendar.get(Calendar.YEAR) + "年" + " " + (mCalendar.get(Calendar.MONTH) + 1) + "月");
+        mTvLunarMonth.setText(StrUtils.getFormatString(R.string.lunar_month_unit, mToday.getLunarMonth()));
+        mTvLunarYear.setText(StrUtils.getFormatString(R.string.lunar_year_unit, mToday.getZodiac()));
+        mTvYearAndMonth.setText(StrUtils.getFormatString(R.string.year_and_month_unit, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH) + 1));
+        mTvLunarHoliday.setText(DateUtils.getLastedLunarHoliday());
+
         mIvLastMonth.setOnClickListener(this);
         mIvNextMonth.setOnClickListener(this);
 
@@ -84,13 +87,13 @@ public class MainActivity extends BaseActivity {
                 mCalendar.add(Calendar.MONTH, -1);
                 mDayList = DateUtils.getDaysOfMonth(mCalendar, mDayList);
                 mMonthViewAdapter.notifyDataSetChanged();
-                mTvYearAndMonth.setText(mCalendar.get(Calendar.YEAR) + "年" + " " + (mCalendar.get(Calendar.MONTH) + 1) + "月");
+                mTvYearAndMonth.setText(StrUtils.getFormatString(R.string.year_and_month_unit, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH) + 1));
                 break;
             case R.id.iv_next_month:
                 mCalendar.add(Calendar.MONTH, 1);
                 mDayList = DateUtils.getDaysOfMonth(mCalendar, mDayList);
                 mMonthViewAdapter.notifyDataSetChanged();
-                mTvYearAndMonth.setText(mCalendar.get(Calendar.YEAR) + "年" + " " + (mCalendar.get(Calendar.MONTH) + 1) + "月");
+                mTvYearAndMonth.setText(StrUtils.getFormatString(R.string.year_and_month_unit, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH) + 1));
                 break;
         }
     }

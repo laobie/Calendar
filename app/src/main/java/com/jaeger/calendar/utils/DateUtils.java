@@ -26,4 +26,21 @@ public class DateUtils {
         return days;
     }
 
+    public static String getLastedLunarHoliday() {
+        Calendar calendar = Calendar.getInstance();
+        Day day = new Day(calendar);
+        int i = 0;
+        while (day.getSolarTerm() == null) {
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+            i++;
+            day.setDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        }
+
+        if (i == 0) {
+            return day.getSolarTerm();
+        } else {
+            return i + "天后 " + day.getSolarTerm();
+        }
+    }
+
 }
